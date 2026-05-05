@@ -40,37 +40,12 @@
 				{
 					"name": "Heading",
 					"slug": "heading",
-					"fontFamily": "'Fraunces', Georgia, 'Times New Roman', serif",
-					"fontFace": [
-						{
-							"fontFamily": "Fraunces",
-							"fontStretch": "normal",
-							"fontStyle": "normal",
-							"fontWeight": "400 700",
-							"src": [ "https://fonts.gstatic.com/s/fraunces/v37/6NUh8FyLNQOQZAnv9bYEvDiIdE9Ea92uemAk.woff2" ]
-						},
-						{
-							"fontFamily": "Fraunces",
-							"fontStretch": "normal",
-							"fontStyle": "italic",
-							"fontWeight": "400 600",
-							"src": [ "https://fonts.gstatic.com/s/fraunces/v37/6NUS8FyLNQOQZAnv9ZwlvHy3MPB7QwUmuiCQU2Y.woff2" ]
-						}
-					]
+					"fontFamily": "'Fraunces', Georgia, 'Times New Roman', serif"
 				},
 				{
 					"name": "Body",
 					"slug": "body",
-					"fontFamily": "'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif",
-					"fontFace": [
-						{
-							"fontFamily": "Inter",
-							"fontStretch": "normal",
-							"fontStyle": "normal",
-							"fontWeight": "400 600",
-							"src": [ "https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2" ]
-						}
-					]
+					"fontFamily": "'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif"
 				}
 			],
 			"fontSizes": [

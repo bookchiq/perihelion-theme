@@ -32,6 +32,31 @@ add_action( 'init', function () {
 } );
 
 /**
+ * Enqueue Google Fonts.
+ *
+ * Loaded via Google's CSS API URL rather than theme.json's fontFace
+ * declarations because the canonical woff2 URLs change with each
+ * Fraunces/Inter version and hard-coding them is fragile. The CSS API
+ * resolves to the right woff2 files automatically.
+ *
+ * Uses preconnect hints to shave the initial DNS lookup off the load,
+ * and font-display: swap so text remains visible during fetch.
+ */
+add_action( 'wp_enqueue_scripts', function () {
+	wp_enqueue_style(
+		'perihelion-google-fonts',
+		'https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&family=Inter:wght@400..600&display=swap',
+		array(),
+		null
+	);
+}, 5 );
+
+add_action( 'wp_head', function () {
+	echo "\n" . '<link rel="preconnect" href="https://fonts.googleapis.com">' . "\n";
+	echo '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>' . "\n";
+}, 1 );
+
+/**
  * Enqueue the theme's custom stylesheet.
  *
  * style.css holds only the theme metadata header; all actual styles live
@@ -43,7 +68,7 @@ add_action( 'wp_enqueue_scripts', function () {
 	wp_enqueue_style(
 		'perihelion-custom',
 		get_theme_file_uri( 'assets/css/custom.css' ),
-		array(),
+		array( 'perihelion-google-fonts' ),
 		wp_get_theme()->get( 'Version' )
 	);
 } );
