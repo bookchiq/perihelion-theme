@@ -74,6 +74,29 @@ add_action( 'wp_enqueue_scripts', function () {
 } );
 
 /**
+ * Enqueue the app-nav active-state JS shim.
+ *
+ * `core/list` doesn't add `current-menu-item` to its descendants the way
+ * `core/navigation` would, so this small script walks the rendered
+ * `.is-style-app-nav` list and marks the link whose href matches the
+ * current pathname. Loaded only for logged-in users (the only audience
+ * who sees the app nav).
+ */
+add_action( 'wp_enqueue_scripts', function () {
+	if ( ! is_user_logged_in() ) {
+		return;
+	}
+
+	wp_enqueue_script(
+		'perihelion-app-nav',
+		get_theme_file_uri( 'assets/js/app-nav.js' ),
+		array(),
+		wp_get_theme()->get( 'Version' ),
+		true
+	);
+} );
+
+/**
  * Register the eyebrow paragraph style and footer-links list style.
  *
  * Block styles are picked up by the editor and frontend; the actual
@@ -141,3 +164,30 @@ add_filter( 'login_headerurl', function () {
 add_filter( 'login_headertext', function () {
 	return get_bloginfo( 'name' );
 } );
+
+/**
+ * Hide poster-only nav items in `header-app.html` from users who lack
+ * the `orbit_create_activity` capability.
+ *
+ * The header-app template marks the four poster-only list items
+ * (Manage, New Activity, Subscribers, Profile) with the className
+ * `is-poster-only`. This filter hooks into core/list-item rendering
+ * and returns an empty string for those items when the current user
+ * isn't a poster, so subscribers don't see inert nav links.
+ *
+ * Posters and admins (who have `orbit_create_activity`) see all items
+ * unchanged.
+ */
+add_filter( 'render_block_core/list-item', function ( $block_content, $block ) {
+	$class_name = isset( $block['attrs']['className'] ) ? $block['attrs']['className'] : '';
+
+	if ( false === strpos( $class_name, 'is-poster-only' ) ) {
+		return $block_content;
+	}
+
+	if ( current_user_can( 'orbit_create_activity' ) ) {
+		return $block_content;
+	}
+
+	return '';
+}, 10, 2 );

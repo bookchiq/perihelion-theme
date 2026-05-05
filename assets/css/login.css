@@ -15,7 +15,13 @@ body.login {
 	font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
 }
 
-/* Replace the WordPress logo with a Fraunces wordmark "Perihelion". */
+/* Replace the WordPress logo with a Fraunces wordmark "Perihelion".
+ *
+ * The anchor's text content is the site name (set via the
+ * login_headertext filter in functions.php). WP's default CSS hides
+ * it via large negative text-indent + background-image; resetting
+ * those reveals it as plain text we then style.
+ */
 .login h1 a {
 	background-image: none;
 	width: auto;
@@ -28,10 +34,6 @@ body.login {
 	letter-spacing: -0.02em;
 	line-height: 1;
 	margin-bottom: 1.5rem;
-}
-
-.login h1 a::after {
-	content: 'Perihelion';
 }
 
 /* Form container — soft cream surface, gentle border. */

@@ -255,13 +255,6 @@
 			"core/separator": {
 				"color": { "background": "var(--wp--preset--color--rule)" },
 				"border": { "color": "var(--wp--preset--color--rule)" }
-			},
-			"core/navigation": {
-				"typography": {
-					"fontFamily": "var(--wp--preset--font-family--body)",
-					"fontSize": "var(--wp--preset--font-size--body)",
-					"fontWeight": "400"
-				}
 			}
 		}
 	},
