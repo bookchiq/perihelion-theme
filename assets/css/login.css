@@ -1,0 +1,115 @@
+/**
+ * Perihelion — login screen styling.
+ *
+ * Enqueued via login_enqueue_scripts in functions.php. Restyles the
+ * default WordPress sign-in / register / lost-password forms to match
+ * the brand without replacing any templates.
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..700&family=Inter:wght@400..600&display=swap');
+
+body.login {
+	background-color: #F7F3ED;
+	background-image: url("data:image/svg+xml;utf8,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' seed='5'/%3E%3CfeColorMatrix values='0 0 0 0 0.16 0 0 0 0 0.16 0 0 0 0 0.13 0 0 0 0.045 0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+	color: #2A2A28;
+	font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+}
+
+/* Replace the WordPress logo with a Fraunces wordmark "Perihelion". */
+.login h1 a {
+	background-image: none;
+	width: auto;
+	height: auto;
+	text-indent: 0;
+	color: #2A2A28;
+	font-family: 'Fraunces', Georgia, serif;
+	font-size: 2.5rem;
+	font-weight: 500;
+	letter-spacing: -0.02em;
+	line-height: 1;
+	margin-bottom: 1.5rem;
+}
+
+.login h1 a::after {
+	content: 'Perihelion';
+}
+
+/* Form container — soft cream surface, gentle border. */
+.login form {
+	background-color: #ffffff;
+	border: 1px solid rgba(156, 75, 48, 0.15);
+	box-shadow: 0 1px 3px rgba(42, 42, 40, 0.04), 0 2px 8px rgba(42, 42, 40, 0.04);
+	border-radius: 12px;
+	padding: 2rem 1.5rem;
+}
+
+/* Inputs — paper bg, ink text, sienna focus. */
+.login form input[type="text"],
+.login form input[type="email"],
+.login form input[type="password"] {
+	background-color: #F7F3ED;
+	border: 1px solid rgba(156, 75, 48, 0.25);
+	border-radius: 8px;
+	color: #2A2A28;
+	font-family: 'Inter', system-ui, sans-serif;
+	font-size: 1rem;
+	padding: 0.55em 0.65em;
+	box-shadow: none;
+}
+
+.login form input[type="text"]:focus,
+.login form input[type="email"]:focus,
+.login form input[type="password"]:focus {
+	border-color: #9C4B30;
+	outline: 2px solid rgba(156, 75, 48, 0.2);
+	outline-offset: 1px;
+	box-shadow: none;
+}
+
+.login form label {
+	color: #2A2A28;
+	font-weight: 500;
+	font-size: 1rem;
+}
+
+/* Primary button — sienna, paper text. */
+.login .button-primary,
+.login .wp-core-ui .button-primary {
+	background-color: #9C4B30;
+	border-color: #9C4B30;
+	color: #F7F3ED;
+	border-radius: 8px;
+	padding: 0.55em 1.15em;
+	font-family: 'Inter', system-ui, sans-serif;
+	font-weight: 500;
+	letter-spacing: 0.01em;
+	box-shadow: none;
+	text-shadow: none;
+	transition: background-color 0.18s ease;
+}
+
+.login .button-primary:hover,
+.login .button-primary:focus {
+	background-color: #803D26;
+	border-color: #803D26;
+}
+
+/* Secondary links (Lost your password?, Back to site) */
+.login #nav a,
+.login #backtoblog a,
+.login p a {
+	color: #2A2A28;
+	text-decoration: underline solid #9C4B30 2px;
+	text-underline-offset: 2px;
+}
+
+.login #nav a:hover,
+.login #backtoblog a:hover,
+.login p a:hover {
+	color: #803D26;
+}
+
+/* Privacy notice */
+.privacy-policy-page-link {
+	color: #5A5A55;
+}

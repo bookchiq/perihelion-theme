@@ -1,0 +1,156 @@
+/**
+ * Perihelion — custom CSS layer.
+ *
+ * theme.json handles palette, typography, spacing, and most block-level
+ * styling. Everything in this file is something theme.json can't express:
+ *
+ *   - The cream-paper noise overlay on body background
+ *   - The focus-visible ring on interactive elements
+ *   - The "eyebrow" paragraph block style (uppercase + letter-spacing)
+ *   - The footer-links list block style (no bullets, vertical stack)
+ *   - The numbered-step circle (used in the "How it works" pattern)
+ *   - Mobile responsive overrides for spacing tokens
+ */
+
+/* ---------------------------------------------------------------------- */
+/* 1. Body texture — the cream-paper noise overlay.
+/*    Per the design system Open Question, this is enabled by default.
+/*    To disable, comment out the background-image line.                  */
+/* ---------------------------------------------------------------------- */
+
+body {
+	background-image: url("data:image/svg+xml;utf8,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' seed='5'/%3E%3CfeColorMatrix values='0 0 0 0 0.16 0 0 0 0 0.16 0 0 0 0 0.13 0 0 0 0.045 0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ---------------------------------------------------------------------- */
+/* 2. Focus-visible ring — for keyboard accessibility on all interactives. */
+/* ---------------------------------------------------------------------- */
+
+a:focus-visible,
+button:focus-visible,
+.wp-element-button:focus-visible,
+.wp-block-button__link:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+	outline: 2px solid var(--wp--preset--color--sienna-hover);
+	outline-offset: 2px;
+}
+
+/* ---------------------------------------------------------------------- */
+/* 3. Eyebrow paragraph style — small, uppercase, letter-spaced.          */
+/*    Registered in functions.php as a block style for core/paragraph.    */
+/* ---------------------------------------------------------------------- */
+
+.is-style-eyebrow {
+	font-size: var(--wp--preset--font-size--caption);
+	font-weight: 500;
+	text-transform: uppercase;
+	letter-spacing: 0.12em;
+	margin-bottom: 0;
+}
+
+/* ---------------------------------------------------------------------- */
+/* 4. Footer-links list style — no bullets, no padding, vertical stack.   */
+/* ---------------------------------------------------------------------- */
+
+.is-style-footer-links {
+	list-style: none;
+	padding-left: 0;
+	margin: 0;
+}
+
+.is-style-footer-links li {
+	padding: 0.25em 0;
+}
+
+/* ---------------------------------------------------------------------- */
+/* 5. Numbered step — the small filled circle used in "How it works".     */
+/*    Applied via .perihelion-step__number on the digit paragraph block.  */
+/* ---------------------------------------------------------------------- */
+
+.perihelion-step__number {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 2.25em;
+	height: 2.25em;
+	border-radius: 50%;
+	font-family: var(--wp--preset--font-family--heading);
+	font-size: var(--wp--preset--font-size--h3);
+	font-weight: 600;
+	line-height: 1;
+	margin: 0 0 var(--wp--preset--spacing--30) 0;
+	padding: 0;
+}
+
+/* ---------------------------------------------------------------------- */
+/* 6. Site title — make sure the linked title isn't underlined by the     */
+/*    inherited link style. theme.json sets textDecoration:none but we    */
+/*    re-assert here for the inner anchor.                                */
+/* ---------------------------------------------------------------------- */
+
+.wp-block-site-title a,
+.wp-block-site-title a:hover,
+.wp-block-site-title a:focus {
+	text-decoration: none;
+	color: var(--wp--preset--color--ink);
+}
+
+/* ---------------------------------------------------------------------- */
+/* 7. Navigation — quiet text styling, sienna underline on hover/active.  */
+/* ---------------------------------------------------------------------- */
+
+.wp-block-navigation .wp-block-navigation-item__content {
+	text-decoration: none;
+}
+
+.wp-block-navigation .wp-block-navigation-item__content:hover,
+.wp-block-navigation .wp-block-navigation-item__content:focus,
+.wp-block-navigation .current-menu-item .wp-block-navigation-item__content {
+	text-decoration: underline solid var(--wp--preset--color--sienna) 2px;
+	text-underline-offset: 4px;
+}
+
+/* ---------------------------------------------------------------------- */
+/* 8. Mobile spacing compression — section padding compresses one step    */
+/*    on the scale below 768px, per the design system spec.               */
+/* ---------------------------------------------------------------------- */
+
+@media (max-width: 768px) {
+	/* 2xl (6rem) -> xl (4rem) */
+	[style*="padding-top:var(--wp--preset--spacing--80)"] {
+		padding-top: var(--wp--preset--spacing--70) !important;
+	}
+	[style*="padding-bottom:var(--wp--preset--spacing--80)"] {
+		padding-bottom: var(--wp--preset--spacing--70) !important;
+	}
+
+	/* xl (4rem) -> a touch under */
+	[style*="padding-top:var(--wp--preset--spacing--70)"] {
+		padding-top: 3rem !important;
+	}
+	[style*="padding-bottom:var(--wp--preset--spacing--70)"] {
+		padding-bottom: 3rem !important;
+	}
+}
+
+/* ---------------------------------------------------------------------- */
+/* 9. Quote block — re-assert the design-system 32em max-width inside     */
+/*    constrained containers (theme.json's border styling is applied at   */
+/*    the global block style level).                                      */
+/* ---------------------------------------------------------------------- */
+
+.wp-block-quote {
+	max-width: 32em;
+}
+
+/* ---------------------------------------------------------------------- */
+/* 10. Smooth transitions on interactive elements.                         */
+/* ---------------------------------------------------------------------- */
+
+.wp-block-button__link,
+.wp-element-button,
+a {
+	transition: background-color 0.18s ease, color 0.18s ease, border-color 0.18s ease;
+}
