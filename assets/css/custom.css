@@ -64,6 +64,42 @@ select:focus-visible {
 	padding: 0.25em 0;
 }
 
+/* App nav — horizontal list of links in the app header. */
+.is-style-app-nav {
+	list-style: none;
+	padding-left: 0;
+	margin: 0;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.25em var(--wp--preset--spacing--40, 1rem);
+	align-items: center;
+}
+
+.is-style-app-nav li {
+	margin: 0;
+}
+
+.is-style-app-nav li a {
+	color: var(--wp--preset--color--ink);
+	text-decoration: none;
+	padding-block: 0.25em;
+	border-bottom: 2px solid transparent;
+	transition: border-color 0.15s ease;
+}
+
+.is-style-app-nav li a:hover,
+.is-style-app-nav li a:focus,
+.is-style-app-nav li.current-menu-item a {
+	border-bottom-color: var(--wp--preset--color--sienna);
+	text-decoration: none;
+}
+
+@media (max-width: 768px) {
+	.is-style-app-nav {
+		font-size: var(--wp--preset--font-size--caption);
+	}
+}
+
 /* ---------------------------------------------------------------------- */
 /* 5. Numbered step — the small filled circle used in "How it works".     */
 /*    Applied via .perihelion-step__number on the digit paragraph block.  */
