@@ -101,6 +101,15 @@ add_action( 'init', function () {
 			'inline_style' => '',
 		)
 	);
+
+	register_block_style(
+		'core/list',
+		array(
+			'name'         => 'app-nav',
+			'label'        => __( 'App nav', 'perihelion' ),
+			'inline_style' => '',
+		)
+	);
 } );
 
 /**
