@@ -66,6 +66,14 @@ distinguishing intentional implementation calls from bugs.
 **Why:** The wordmark "Perihelion" in the header should not be underlined — it's a wordmark, not a body link. The global link decoration is the right default for body text but wrong for the brand mark.
 **Impact:** Wordmark renders without underline, matching the style tile. Same approach in `custom.css` re-asserts the rule against any conflicting cascade.
 
+## 11. Google Fonts loaded via wp_enqueue_style, not theme.json fontFace
+
+**What:** `theme.json`'s `fontFamilies` entries declare only `name`, `slug`, and `fontFamily` (the CSS family name + fallback stack). They do not declare `fontFace.src` URLs. Instead, `functions.php` enqueues Google Fonts via the CSS API URL (`https://fonts.googleapis.com/css2?family=Fraunces:...&family=Inter:...&display=swap`) using `wp_enqueue_style`.
+
+**Why:** The original implementation hard-coded specific `fonts.gstatic.com` woff2 URLs in `fontFace.src`. Those URLs are version-specific (e.g., `/v37/`) and Google updates them periodically, plus there can be hot-link / CORS issues fetching them directly. The CSS API URL is the canonical, stable way to load Google Fonts and resolves to whatever woff2 files are current.
+
+**Impact:** Fonts load reliably across all browsers. There's an extra HTTP request to `fonts.googleapis.com` for the CSS, but a `preconnect` hint mitigates the latency, and Google's font CSS is small. Functionally identical to spec.
+
 ## Open questions inherited from upstream phases
 
 These remain as flagged in `docs/design-system.md` and `docs/website-engagement.md`:
