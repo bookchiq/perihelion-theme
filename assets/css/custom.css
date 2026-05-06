@@ -64,6 +64,31 @@ select:focus-visible {
 	padding: 0.25em 0;
 }
 
+/* App-footer link list — horizontal, dot-separated, centered. The
+ * marketing footer uses the same `.is-style-footer-links` block style
+ * but in a column-layout context where stacking is appropriate; here
+ * the footer is single-column so the links lay out horizontally. */
+.perihelion-footer-app__links {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 0 0.85em;
+	text-align: center;
+}
+
+.perihelion-footer-app__links li {
+	padding: 0;
+	position: relative;
+}
+
+.perihelion-footer-app__links li + li::before {
+	content: "·";
+	position: absolute;
+	left: -0.55em;
+	color: var(--wp--preset--color--slate);
+	opacity: 0.5;
+}
+
 /* App nav — horizontal list of links in the app header. */
 .is-style-app-nav {
 	list-style: none;

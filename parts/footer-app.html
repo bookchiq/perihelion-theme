@@ -1,7 +1,7 @@
-<!-- wp:group {"tagName":"div","style":{"spacing":{"padding":{"top":"var:preset|spacing|50","bottom":"var:preset|spacing|50"}}},"layout":{"type":"constrained","wideSize":"1080px","contentSize":"1080px"}} -->
+<!-- wp:group {"tagName":"div","style":{"spacing":{"padding":{"top":"var:preset|spacing|50","bottom":"var:preset|spacing|50"},"blockGap":"var:preset|spacing|30"}},"layout":{"type":"constrained","wideSize":"1080px","contentSize":"1080px"}} -->
 <div class="wp-block-group" style="padding-top:var(--wp--preset--spacing--50);padding-bottom:var(--wp--preset--spacing--50)">
 
-	<!-- wp:group {"className":"perihelion-footer-app__inner","style":{"typography":{"fontSize":"var:preset|font-size|caption"},"color":{"text":"var:preset|color|slate"}},"layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"center","verticalAlignment":"center"}} -->
+	<!-- wp:group {"className":"perihelion-footer-app__inner","style":{"typography":{"fontSize":"var:preset|font-size|caption"},"color":{"text":"var:preset|color|slate"}},"layout":{"type":"flex","flexWrap":"wrap","justifyContent":"center","verticalAlignment":"center"}} -->
 	<div class="wp-block-group perihelion-footer-app__inner has-text-color has-caption-font-size" style="color:var(--wp--preset--color--slate)">
 		<!-- wp:paragraph {"style":{"typography":{"fontSize":"inherit"}}} -->
 		<p style="font-size:inherit">Perihelion ·</p>
@@ -9,6 +9,23 @@
 		<!-- wp:loginout {"displayLoginAsForm":false} /-->
 	</div>
 	<!-- /wp:group -->
+
+	<!-- wp:list {"className":"is-style-footer-links perihelion-footer-app__links","style":{"typography":{"fontSize":"var:preset|font-size|caption"}}} -->
+	<ul class="wp-block-list is-style-footer-links perihelion-footer-app__links has-caption-font-size">
+		<!-- wp:list-item -->
+		<li><a href="/why/">Why this exists</a></li>
+		<!-- /wp:list-item -->
+		<!-- wp:list-item -->
+		<li><a href="/privacy/">Privacy</a></li>
+		<!-- /wp:list-item -->
+		<!-- wp:list-item -->
+		<li><a href="/contact/">Contact</a></li>
+		<!-- /wp:list-item -->
+		<!-- wp:list-item -->
+		<li><a href="https://github.com/makyrie/orbit">GitHub</a></li>
+		<!-- /wp:list-item -->
+	</ul>
+	<!-- /wp:list -->
 
 </div>
 <!-- /wp:group -->

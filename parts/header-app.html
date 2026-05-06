@@ -8,11 +8,11 @@
 
 		<!-- wp:list {"className":"is-style-app-nav","style":{"typography":{"fontSize":"var:preset|font-size|body"}}} -->
 		<ul class="wp-block-list is-style-app-nav has-body-font-size">
-			<!-- wp:list-item -->
-			<li><a href="/dashboard/">Dashboard</a></li>
+			<!-- wp:list-item {"className":"is-authenticated-only"} -->
+			<li class="is-authenticated-only"><a href="/dashboard/">Dashboard</a></li>
 			<!-- /wp:list-item -->
-			<!-- wp:list-item -->
-			<li><a href="/subscriptions/">Subscriptions</a></li>
+			<!-- wp:list-item {"className":"is-authenticated-only"} -->
+			<li class="is-authenticated-only"><a href="/subscriptions/">Subscriptions</a></li>
 			<!-- /wp:list-item -->
 			<!-- wp:list-item {"className":"is-poster-only"} -->
 			<li class="is-poster-only"><a href="/manage/">Manage</a></li>
@@ -26,8 +26,8 @@
 			<!-- wp:list-item {"className":"is-poster-only"} -->
 			<li class="is-poster-only"><a href="/edit-profile/">Profile</a></li>
 			<!-- /wp:list-item -->
-			<!-- wp:list-item -->
-			<li><a href="/settings/">Settings</a></li>
+			<!-- wp:list-item {"className":"is-authenticated-only"} -->
+			<li class="is-authenticated-only"><a href="/settings/">Settings</a></li>
 			<!-- /wp:list-item -->
 			<!-- wp:list-item -->
 			<li><!-- wp:loginout {"displayLoginAsForm":false} /--></li>

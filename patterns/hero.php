@@ -25,9 +25,9 @@
 
 	<!-- wp:group {"style":{"spacing":{"margin":{"top":"var:preset|spacing|50"}}}} -->
 	<div class="wp-block-group" style="margin-top:var(--wp--preset--spacing--50)">
-		<!-- wp:shortcode -->
-		[orbit_cta]
-		<!-- /wp:shortcode -->
+		<!-- wp:html -->
+		<?php echo do_shortcode( '[orbit_cta]' ); ?>
+		<!-- /wp:html -->
 	</div>
 	<!-- /wp:group -->
 

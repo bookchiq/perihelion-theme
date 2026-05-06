@@ -166,28 +166,35 @@ add_filter( 'login_headertext', function () {
 } );
 
 /**
- * Hide poster-only nav items in `header-app.html` from users who lack
- * the `orbit_create_activity` capability.
+ * Hide capability-gated nav items in `header-app.html` from users who
+ * can't reach the destination they point at.
  *
- * The header-app template marks the four poster-only list items
- * (Manage, New Activity, Subscribers, Profile) with the className
- * `is-poster-only`. This filter hooks into core/list-item rendering
- * and returns an empty string for those items when the current user
- * isn't a poster, so subscribers don't see inert nav links.
+ * The header-app template renders for everyone — including anonymous
+ * visitors on `/@slug/` and `/activity/{id}` virtual pages — so the
+ * nav must hide items those visitors can't actually use:
  *
- * Posters and admins (who have `orbit_create_activity`) see all items
- * unchanged.
+ *  - `is-authenticated-only` — Dashboard, Subscriptions, Settings.
+ *    Hidden from logged-out visitors. Clicking them otherwise just
+ *    bounces to login, which is friction without value.
+ *
+ *  - `is-poster-only` — Manage, New Activity, Subscribers, Profile.
+ *    Hidden from anyone without the `orbit_create_activity` capability
+ *    (which includes anonymous visitors as well as subscriber-role
+ *    accounts).
+ *
+ * The Log in / Log out toggle is rendered by core/loginout and flips
+ * automatically based on auth state — no class needed.
  */
 add_filter( 'render_block_core/list-item', function ( $block_content, $block ) {
 	$class_name = isset( $block['attrs']['className'] ) ? $block['attrs']['className'] : '';
 
-	if ( false === strpos( $class_name, 'is-poster-only' ) ) {
-		return $block_content;
+	if ( false !== strpos( $class_name, 'is-authenticated-only' ) && ! is_user_logged_in() ) {
+		return '';
 	}
 
-	if ( current_user_can( 'orbit_create_activity' ) ) {
-		return $block_content;
+	if ( false !== strpos( $class_name, 'is-poster-only' ) && ! current_user_can( 'orbit_create_activity' ) ) {
+		return '';
 	}
 
-	return '';
+	return $block_content;
 }, 10, 2 );
