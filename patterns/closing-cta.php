@@ -22,13 +22,13 @@
 		<p class="has-text-align-center has-text-color has-lead-font-size" style="color:var(--wp--preset--color--slate)"><?php echo esc_html__( 'Set up a profile and start sharing what you\'re up to.', 'perihelion' ); ?></p>
 		<!-- /wp:paragraph -->
 
-		<!-- wp:buttons {"layout":{"type":"flex","justifyContent":"center"},"style":{"spacing":{"margin":{"top":"var:preset|spacing|40"}}}} -->
-		<div class="wp-block-buttons" style="margin-top:var(--wp--preset--spacing--40)">
-			<!-- wp:button -->
-			<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="/edit-profile/"><?php echo esc_html__( 'Set up your profile', 'perihelion' ); ?></a></div>
-			<!-- /wp:button -->
+		<!-- wp:group {"layout":{"type":"flex","justifyContent":"center"},"style":{"spacing":{"margin":{"top":"var:preset|spacing|40"}}}} -->
+		<div class="wp-block-group" style="margin-top:var(--wp--preset--spacing--40)">
+			<!-- wp:shortcode -->
+			[orbit_cta]
+			<!-- /wp:shortcode -->
 		</div>
-		<!-- /wp:buttons -->
+		<!-- /wp:group -->
 
 	</div>
 	<!-- /wp:group -->
