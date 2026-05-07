@@ -16,11 +16,11 @@
 	<!-- /wp:heading -->
 
 	<!-- wp:paragraph {"fontSize":"lead","style":{"typography":{"fontStyle":"italic","fontFamily":"var:preset|font-family|heading","lineHeight":"1.4"},"color":{"text":"var:preset|color|slate"}}} -->
-	<p class="has-text-color has-lead-font-size" style="color:var(--wp--preset--color--slate);font-family:var(--wp--preset--font-family--heading);font-style:italic;line-height:1.4"><?php echo esc_html__( 'More time with the friends you already have. Without the friction.', 'perihelion' ); ?></p>
+	<p class="has-text-color has-lead-font-size" style="color:var(--wp--preset--color--slate);font-family:var(--wp--preset--font-family--heading);font-style:italic;line-height:1.4"><?php echo esc_html__( 'More time with the friends you already have.', 'perihelion' ); ?></p>
 	<!-- /wp:paragraph -->
 
 	<!-- wp:paragraph {"fontSize":"lead","style":{"spacing":{"margin":{"top":"var:preset|spacing|40"}}}} -->
-	<p class="has-lead-font-size" style="margin-top:var(--wp--preset--spacing--40)"><?php echo esc_html__( 'Subscribe to the people whose plans you want to hear about. They post things they\'re doing — a Saturday hike, a casual dinner — and you opt in to whatever you\'re actually interested in. Saying nothing is fine.', 'perihelion' ); ?></p>
+	<p class="has-lead-font-size" style="margin-top:var(--wp--preset--spacing--40)"><?php echo esc_html__( 'Your subscribers opt in once and choose how loud you can be. You post when you\'ve got something — a Saturday hike, a casual dinner, a half-formed idea. They reply if they want. Saying nothing is the default.', 'perihelion' ); ?></p>
 	<!-- /wp:paragraph -->
 
 	<!-- wp:group {"style":{"spacing":{"margin":{"top":"var:preset|spacing|50"}}}} -->

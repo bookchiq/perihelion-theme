@@ -34,7 +34,7 @@
 		<!-- /wp:heading -->
 
 		<!-- wp:paragraph -->
-		<p><?php echo esc_html__( 'When someone shares their Perihelion link with you, you can opt in to hearing about the kinds of things they post. They approve you, you\'re in.', 'perihelion' ); ?></p>
+		<p><?php echo esc_html__( 'Someone shares their Perihelion link with you. You opt in to hearing what they post. They approve you, you\'re in.', 'perihelion' ); ?></p>
 		<!-- /wp:paragraph -->
 	</div>
 	<!-- /wp:group -->
@@ -50,7 +50,7 @@
 		<!-- /wp:heading -->
 
 		<!-- wp:paragraph -->
-		<p><?php echo esc_html__( 'Share an activity at one of three commitment levels: "just an idea," "I\'ll go if you will," or "I\'m going — join me." Your subscribers see it, no group-text required.', 'perihelion' ); ?></p>
+		<p><?php echo esc_html__( 'Post an activity at one of three commitment levels: "just an idea," "I\'ll go if you will," or "I\'m going — join me." Each subscriber hears about it the way they signed up for — text, email, or a quiet daily digest. Never a group thread.', 'perihelion' ); ?></p>
 		<!-- /wp:paragraph -->
 	</div>
 	<!-- /wp:group -->
