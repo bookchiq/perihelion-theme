@@ -15,11 +15,11 @@
 	<div class="wp-block-group">
 
 		<!-- wp:heading {"level":2,"textAlign":"center","fontSize":"h2"} -->
-		<h2 class="wp-block-heading has-text-align-center has-h-2-font-size"><?php echo esc_html__( 'Ready to make plans?', 'perihelion' ); ?></h2>
+		<h2 class="wp-block-heading has-text-align-center has-h-2-font-size"><?php echo esc_html__( 'Ready when you are.', 'perihelion' ); ?></h2>
 		<!-- /wp:heading -->
 
 		<!-- wp:paragraph {"align":"center","fontSize":"lead","style":{"color":{"text":"var:preset|color|slate"}}} -->
-		<p class="has-text-align-center has-text-color has-lead-font-size" style="color:var(--wp--preset--color--slate)"><?php echo esc_html__( 'Set up a profile and start sharing what you\'re up to.', 'perihelion' ); ?></p>
+		<p class="has-text-align-center has-text-color has-lead-font-size" style="color:var(--wp--preset--color--slate)"><?php echo esc_html__( 'Set up a profile, share your link with the people you actually want to see, and your next plan starts here.', 'perihelion' ); ?></p>
 		<!-- /wp:paragraph -->
 
 		<!-- wp:group {"layout":{"type":"flex","justifyContent":"center"},"style":{"spacing":{"margin":{"top":"var:preset|spacing|40"}}}} -->
