@@ -64,6 +64,36 @@ select:focus-visible {
 	padding: 0.25em 0;
 }
 
+/* Inline footer-links style — horizontal, dot-separated, centered.
+ * Standalone block style (registered as `is-style-footer-links-inline`)
+ * used by the app footer's single-column link list. The marketing
+ * footer uses the vertical `.is-style-footer-links` style in its
+ * narrow column-layout context. The `/ ""` alt-text on the separator
+ * marks it as decorative so screen readers skip it. */
+.is-style-footer-links-inline {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 0 0.85em;
+	text-align: center;
+	list-style: none;
+	padding-left: 0;
+	margin: 0;
+}
+
+.is-style-footer-links-inline li {
+	padding: 0;
+	position: relative;
+}
+
+.is-style-footer-links-inline li + li::before {
+	content: "·" / "";
+	position: absolute;
+	left: -0.55em;
+	color: var(--wp--preset--color--slate);
+	opacity: 0.5;
+}
+
 /* App nav — horizontal list of links in the app header. */
 .is-style-app-nav {
 	list-style: none;

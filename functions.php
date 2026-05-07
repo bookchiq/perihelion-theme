@@ -128,6 +128,15 @@ add_action( 'init', function () {
 	register_block_style(
 		'core/list',
 		array(
+			'name'         => 'footer-links-inline',
+			'label'        => __( 'Inline Footer Links', 'perihelion' ),
+			'inline_style' => '',
+		)
+	);
+
+	register_block_style(
+		'core/list',
+		array(
 			'name'         => 'app-nav',
 			'label'        => __( 'App nav', 'perihelion' ),
 			'inline_style' => '',
@@ -166,28 +175,59 @@ add_filter( 'login_headertext', function () {
 } );
 
 /**
- * Hide poster-only nav items in `header-app.html` from users who lack
- * the `orbit_create_activity` capability.
+ * Hide capability-gated nav items in `header-app.html` from users who
+ * can't reach the destination they point at.
  *
- * The header-app template marks the four poster-only list items
- * (Manage, New Activity, Subscribers, Profile) with the className
- * `is-poster-only`. This filter hooks into core/list-item rendering
- * and returns an empty string for those items when the current user
- * isn't a poster, so subscribers don't see inert nav links.
+ * The header-app template renders for everyone — including anonymous
+ * visitors on `/@slug/` and `/activity/{id}` virtual pages — so the
+ * nav must hide items those visitors can't actually use:
  *
- * Posters and admins (who have `orbit_create_activity`) see all items
- * unchanged.
+ *  - `is-authenticated-only` — Dashboard, Subscriptions, Settings.
+ *    Hidden from logged-out visitors. Clicking them otherwise just
+ *    bounces to login, which is friction without value.
+ *
+ *  - `is-poster-only` — Manage, New Activity, Subscribers, Profile.
+ *    Hidden from anyone without the `orbit_create_activity` capability
+ *    (which includes anonymous visitors as well as subscriber-role
+ *    accounts).
+ *
+ * The Log in / Log out toggle is rendered by core/loginout and flips
+ * automatically based on auth state — no class needed.
+ *
+ * Plugin dependency: the `is-poster-only` branch relies on the
+ * `orbit_create_activity` capability, which is registered by the orbit
+ * plugin. When the plugin is deactivated `current_user_can()` returns
+ * false for everyone and the poster-only items hide silently — that's
+ * acceptable graceful degradation, not a bug.
+ *
+ * Filter scope: only `core/list-item` is filtered — these classNames
+ * on a `core/paragraph` or `core/group` would not be stripped.
+ *
+ * Editor preview: short-circuited during REST requests so a non-poster
+ * admin editing `parts/header-app.html` in the Site Editor sees the
+ * full nav structure (no items hidden by role). The front-end render
+ * path is unchanged.
+ *
+ * @param string $block_content The block's rendered HTML.
+ * @param array  $block         The parsed block, including attrs.
+ * @return string Empty string to hide the item, or the original content.
  */
-add_filter( 'render_block_core/list-item', function ( $block_content, $block ) {
+function perihelion_filter_app_nav_list_item( $block_content, $block ) {
+	if ( defined( 'REST_REQUEST' ) && REST_REQUEST ) {
+		return $block_content;
+	}
+
 	$class_name = isset( $block['attrs']['className'] ) ? $block['attrs']['className'] : '';
+	$classes    = $class_name ? preg_split( '/\s+/', $class_name ) : array();
 
-	if ( false === strpos( $class_name, 'is-poster-only' ) ) {
-		return $block_content;
+	if ( in_array( 'is-authenticated-only', $classes, true ) && ! is_user_logged_in() ) {
+		return '';
 	}
 
-	if ( current_user_can( 'orbit_create_activity' ) ) {
-		return $block_content;
+	if ( in_array( 'is-poster-only', $classes, true ) && ! current_user_can( 'orbit_create_activity' ) ) {
+		return '';
 	}
 
-	return '';
-}, 10, 2 );
+	return $block_content;
+}
+add_filter( 'render_block_core/list-item', 'perihelion_filter_app_nav_list_item', 10, 2 );
