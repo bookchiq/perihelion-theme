@@ -64,25 +64,30 @@ select:focus-visible {
 	padding: 0.25em 0;
 }
 
-/* App-footer link list — horizontal, dot-separated, centered. The
- * marketing footer uses the same `.is-style-footer-links` block style
- * but in a column-layout context where stacking is appropriate; here
- * the footer is single-column so the links lay out horizontally. */
-.perihelion-footer-app__links {
+/* Inline footer-links style — horizontal, dot-separated, centered.
+ * Standalone block style (registered as `is-style-footer-links-inline`)
+ * used by the app footer's single-column link list. The marketing
+ * footer uses the vertical `.is-style-footer-links` style in its
+ * narrow column-layout context. The `/ ""` alt-text on the separator
+ * marks it as decorative so screen readers skip it. */
+.is-style-footer-links-inline {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
 	gap: 0 0.85em;
 	text-align: center;
+	list-style: none;
+	padding-left: 0;
+	margin: 0;
 }
 
-.perihelion-footer-app__links li {
+.is-style-footer-links-inline li {
 	padding: 0;
 	position: relative;
 }
 
-.perihelion-footer-app__links li + li::before {
-	content: "·";
+.is-style-footer-links-inline li + li::before {
+	content: "·" / "";
 	position: absolute;
 	left: -0.55em;
 	color: var(--wp--preset--color--slate);

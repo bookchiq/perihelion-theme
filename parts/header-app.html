@@ -6,6 +6,10 @@
 
 		<!-- wp:site-title {"level":0} /-->
 
+		<!-- The `is-authenticated-only` and `is-poster-only` classes
+		     below are behavioral, not stylistic — they're stripped by
+		     `perihelion_filter_app_nav_list_item()` in functions.php
+		     when the viewer can't reach the destination. -->
 		<!-- wp:list {"className":"is-style-app-nav","style":{"typography":{"fontSize":"var:preset|font-size|body"}}} -->
 		<ul class="wp-block-list is-style-app-nav has-body-font-size">
 			<!-- wp:list-item {"className":"is-authenticated-only"} -->

@@ -128,6 +128,15 @@ add_action( 'init', function () {
 	register_block_style(
 		'core/list',
 		array(
+			'name'         => 'footer-links-inline',
+			'label'        => __( 'Inline Footer Links', 'perihelion' ),
+			'inline_style' => '',
+		)
+	);
+
+	register_block_style(
+		'core/list',
+		array(
 			'name'         => 'app-nav',
 			'label'        => __( 'App nav', 'perihelion' ),
 			'inline_style' => '',
@@ -184,17 +193,41 @@ add_filter( 'login_headertext', function () {
  *
  * The Log in / Log out toggle is rendered by core/loginout and flips
  * automatically based on auth state — no class needed.
+ *
+ * Plugin dependency: the `is-poster-only` branch relies on the
+ * `orbit_create_activity` capability, which is registered by the orbit
+ * plugin. When the plugin is deactivated `current_user_can()` returns
+ * false for everyone and the poster-only items hide silently — that's
+ * acceptable graceful degradation, not a bug.
+ *
+ * Filter scope: only `core/list-item` is filtered — these classNames
+ * on a `core/paragraph` or `core/group` would not be stripped.
+ *
+ * Editor preview: short-circuited during REST requests so a non-poster
+ * admin editing `parts/header-app.html` in the Site Editor sees the
+ * full nav structure (no items hidden by role). The front-end render
+ * path is unchanged.
+ *
+ * @param string $block_content The block's rendered HTML.
+ * @param array  $block         The parsed block, including attrs.
+ * @return string Empty string to hide the item, or the original content.
  */
-add_filter( 'render_block_core/list-item', function ( $block_content, $block ) {
-	$class_name = isset( $block['attrs']['className'] ) ? $block['attrs']['className'] : '';
+function perihelion_filter_app_nav_list_item( $block_content, $block ) {
+	if ( defined( 'REST_REQUEST' ) && REST_REQUEST ) {
+		return $block_content;
+	}
 
-	if ( false !== strpos( $class_name, 'is-authenticated-only' ) && ! is_user_logged_in() ) {
+	$class_name = isset( $block['attrs']['className'] ) ? $block['attrs']['className'] : '';
+	$classes    = $class_name ? preg_split( '/\s+/', $class_name ) : array();
+
+	if ( in_array( 'is-authenticated-only', $classes, true ) && ! is_user_logged_in() ) {
 		return '';
 	}
 
-	if ( false !== strpos( $class_name, 'is-poster-only' ) && ! current_user_can( 'orbit_create_activity' ) ) {
+	if ( in_array( 'is-poster-only', $classes, true ) && ! current_user_can( 'orbit_create_activity' ) ) {
 		return '';
 	}
 
 	return $block_content;
-}, 10, 2 );
+}
+add_filter( 'render_block_core/list-item', 'perihelion_filter_app_nav_list_item', 10, 2 );
