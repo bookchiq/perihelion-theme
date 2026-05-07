@@ -16,7 +16,7 @@
 	<!-- /wp:heading -->
 
 	<!-- wp:paragraph {"fontSize":"lead","style":{"typography":{"fontStyle":"italic","fontFamily":"var:preset|font-family|heading","lineHeight":"1.4"},"color":{"text":"var:preset|color|slate"}}} -->
-	<p class="has-text-color has-lead-font-size" style="color:var(--wp--preset--color--slate);font-family:var(--wp--preset--font-family--heading);font-style:italic;line-height:1.4"><?php echo esc_html__( 'More time with the friends you already have.', 'perihelion' ); ?></p>
+	<p class="has-text-color has-lead-font-size" style="color:var(--wp--preset--color--slate);font-family:var(--wp--preset--font-family--heading);font-style:italic;line-height:1.4"><?php echo esc_html__( 'More time with the friends you already have', 'perihelion' ); ?></p>
 	<!-- /wp:paragraph -->
 
 	<!-- wp:paragraph {"fontSize":"lead","style":{"spacing":{"margin":{"top":"var:preset|spacing|40"}}}} -->
