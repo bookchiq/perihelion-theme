@@ -18,7 +18,7 @@
 		<!-- /wp:paragraph -->
 
 		<!-- wp:heading {"level":2,"fontSize":"h2"} -->
-		<h2 class="wp-block-heading has-h-2-font-size"><?php echo esc_html__( 'Not another social network.', 'perihelion' ); ?></h2>
+		<h2 class="wp-block-heading has-h-2-font-size"><?php echo esc_html__( 'Not another social network', 'perihelion' ); ?></h2>
 		<!-- /wp:heading -->
 	</div>
 	<!-- /wp:group -->
@@ -42,7 +42,7 @@
 		<!-- /wp:heading -->
 
 		<!-- wp:paragraph -->
-		<p><?php echo esc_html__( 'There\'s no feed to scroll. No notifications begging you to come back. No engagement metrics to chase. The whole point is to put a plan together and then go do it offline.', 'perihelion' ); ?></p>
+		<p><?php echo esc_html__( 'No feed to scroll. No streaks to maintain. No notifications begging you back. The whole point is to make a plan and go do it offline.', 'perihelion' ); ?></p>
 		<!-- /wp:paragraph -->
 	</div>
 	<!-- /wp:group -->
@@ -54,7 +54,7 @@
 		<!-- /wp:heading -->
 
 		<!-- wp:paragraph -->
-		<p><?php echo esc_html__( 'Three commitment tiers — "just an idea," "I\'ll go if you will," "I\'m going — join me" — let casual hangs travel as casually as the invitation suggests. Declining is the default. Saying yes means yes; saying nothing is fine.', 'perihelion' ); ?></p>
+		<p><?php echo esc_html__( 'Three commitment tiers — "just an idea," "I\'ll go if you will," "I\'m going — join me" — let casual hangs travel as casually as the invitation suggests. Declining is the default. Saying yes means yes. Saying nothing is fine.', 'perihelion' ); ?></p>
 		<!-- /wp:paragraph -->
 	</div>
 	<!-- /wp:group -->
