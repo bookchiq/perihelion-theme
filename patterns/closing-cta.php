@@ -15,7 +15,7 @@
 	<div class="wp-block-group">
 
 		<!-- wp:heading {"level":2,"textAlign":"center","fontSize":"h2"} -->
-		<h2 class="wp-block-heading has-text-align-center has-h-2-font-size"><?php echo esc_html__( 'Ready when you are.', 'perihelion' ); ?></h2>
+		<h2 class="wp-block-heading has-text-align-center has-h-2-font-size"><?php echo esc_html__( 'Ready when you are', 'perihelion' ); ?></h2>
 		<!-- /wp:heading -->
 
 		<!-- wp:paragraph {"align":"center","fontSize":"lead","style":{"color":{"text":"var:preset|color|slate"}}} -->

@@ -18,7 +18,7 @@
 		<!-- /wp:paragraph -->
 
 		<!-- wp:heading {"level":2,"fontSize":"h2"} -->
-		<h2 class="wp-block-heading has-h-2-font-size"><?php echo esc_html__( 'Three small steps.', 'perihelion' ); ?></h2>
+		<h2 class="wp-block-heading has-h-2-font-size"><?php echo esc_html__( 'Three small steps', 'perihelion' ); ?></h2>
 		<!-- /wp:heading -->
 	</div>
 	<!-- /wp:group -->

@@ -16,7 +16,7 @@
 	<!-- /wp:paragraph -->
 
 	<!-- wp:heading {"level":2,"fontSize":"h1"} -->
-	<h2 class="wp-block-heading has-h-1-font-size"><?php echo esc_html__( 'If you\'re the friend who plans things.', 'perihelion' ); ?></h2>
+	<h2 class="wp-block-heading has-h-1-font-size"><?php echo esc_html__( 'If you\'re the friend who plans things', 'perihelion' ); ?></h2>
 	<!-- /wp:heading -->
 
 	<!-- wp:paragraph {"fontSize":"lead","style":{"color":{"text":"var:preset|color|slate"}}} -->
