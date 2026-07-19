@@ -25,6 +25,9 @@
 		<!-- wp:group {"layout":{"type":"flex","justifyContent":"center"},"style":{"spacing":{"margin":{"top":"var:preset|spacing|40"}}}} -->
 		<div class="wp-block-group" style="margin-top:var(--wp--preset--spacing--40)">
 			<?php echo do_shortcode( '[orbit_cta]' ); ?>
+			<!-- wp:paragraph {"fontSize":"caption"} -->
+			<p class="has-caption-font-size"><a href="/wp-login.php"><?php echo esc_html__( 'Already have an account? Log in', 'perihelion' ); ?></a></p>
+			<!-- /wp:paragraph -->
 		</div>
 		<!-- /wp:group -->
 

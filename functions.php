@@ -175,6 +175,53 @@ add_filter( 'login_headertext', function () {
 } );
 
 /**
+ * Give public pages useful search titles and descriptions without requiring
+ * an SEO plugin or mutable editor metadata.
+ */
+function perihelion_public_description() {
+	if ( is_front_page() ) {
+		return __( 'Make casual plans with the friends you already have, without feeds, group-chat pressure, or another attention trap.', 'perihelion' );
+	}
+
+	$descriptions = array(
+		'why'     => __( 'Why Perihelion makes invitations easier for organizers and invited friends.', 'perihelion' ),
+		'contact' => __( 'Contact Sarah Lewis about Perihelion accounts, privacy, notifications, or technical issues.', 'perihelion' ),
+		'privacy' => __( 'How Perihelion collects, uses, protects, and retains account, notification, and consent information.', 'perihelion' ),
+		'terms'   => __( 'The terms for using Perihelion and its email and notification services.', 'perihelion' ),
+		'sign-up' => __( 'Create a Perihelion account and start sharing plans with friends you already know.', 'perihelion' ),
+	);
+
+	foreach ( $descriptions as $slug => $description ) {
+		if ( is_page( $slug ) ) {
+			return $description;
+		}
+	}
+
+	return '';
+}
+
+add_filter( 'document_title_parts', function ( $parts ) {
+	if ( is_front_page() ) {
+		$parts['title'] = __( 'Perihelion — More time with the friends you already have', 'perihelion' );
+		unset( $parts['tagline'] );
+	}
+	return $parts;
+} );
+
+add_action( 'wp_head', function () {
+	$description = perihelion_public_description();
+	if ( ! $description ) {
+		return;
+	}
+	echo '<meta name="description" content="' . esc_attr( $description ) . '">' . "\n";
+	echo '<meta property="og:title" content="' . esc_attr( wp_get_document_title() ) . '">' . "\n";
+	echo '<meta property="og:description" content="' . esc_attr( $description ) . '">' . "\n";
+	$canonical_url = is_singular() ? get_permalink() : home_url( '/' );
+	echo '<meta property="og:url" content="' . esc_url( $canonical_url ) . '">' . "\n";
+	echo '<meta property="og:type" content="website">' . "\n";
+}, 2 );
+
+/**
  * Hide capability-gated nav items in `header-app.html` from users who
  * can't reach the destination they point at.
  *

@@ -24,15 +24,17 @@ Out of the box, WordPress will show your latest blog posts on the front page. To
 
 The front page now renders the assembled patterns: hero, audience mirror, how it works, what's different, closing CTA.
 
-## 3. Create the marketing pages
+## 3. Publish the canonical pages
 
-In WP admin → **Pages → Add new**, create these three pages with the content noted (or use the WordPress block editor to author your own copy):
+Deploy and activate Orbit before the theme. Orbit creates and updates these code-owned pages during its version-aware upgrade:
 
-- **Why this exists** (slug: `why`) — the manifesto-style essay; uses the default `page.html` template (narrow editorial)
-- **Privacy** (slug: `privacy`) — privacy policy; default `page.html`
-- **Contact** (slug: `contact`) — single page with `mailto:` link; default `page.html`
+- **Why this exists** (`why`)
+- **Contact** (`contact`)
+- **Privacy Policy** (`privacy`)
+- **Terms of Service** (`terms`)
+- **Sign Up** (`sign-up`)
 
-Templates auto-resolve from the slug.
+Do not maintain alternate copies in the editor. Orbit refuses to overwrite unrelated pages that occupy one of these slugs and reports the collision for manual reconciliation.
 
 ## 4. Assign the App template to plugin pages
 

@@ -20,7 +20,7 @@
 	<!-- /wp:paragraph -->
 
 	<!-- wp:paragraph {"fontSize":"lead","style":{"spacing":{"margin":{"top":"var:preset|spacing|40"}}}} -->
-	<p class="has-lead-font-size" style="margin-top:var(--wp--preset--spacing--40)"><?php echo esc_html__( 'Your subscribers opt in once and choose how loud you can be. You post when you\'ve got something — a Saturday hike, a casual dinner, a half-formed idea. They reply if they want. Saying nothing is the default.', 'perihelion' ); ?></p>
+	<p class="has-lead-font-size" style="margin-top:var(--wp--preset--spacing--40)"><?php echo esc_html__( 'Share the things you want to do with friends who have chosen to hear from you. Post a Saturday hike, a casual dinner, or a half-formed idea. They reply if they want; saying nothing is always fine.', 'perihelion' ); ?></p>
 	<!-- /wp:paragraph -->
 
 	<!-- wp:group {"style":{"spacing":{"margin":{"top":"var:preset|spacing|50"}}}} -->
