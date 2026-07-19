@@ -10,4 +10,8 @@ The theme owns the homepage composition, anonymous navigation, visual system, an
 
 Editor changes to those surfaces are not authoritative and may be replaced on the next release. The marketing header and footer are also code-owned: a theme version change removes Site Editor overrides for those two template parts so reviewed navigation is published. Other template-part customizations are untouched.
 
-The theme emits descriptions and Open Graph metadata for its public surfaces. An SEO integration that owns those tags can disable the theme output with the `perihelion_emit_public_metadata` filter. See the [plugin documentation](https://github.com/makyrie/orbit/tree/main/docs) for the brand, content, compliance, and release architecture.
+The theme emits descriptions and Open Graph metadata for its public surfaces. When Yoast SEO is active, the theme supplies the code-owned title and descriptions through Yoast's presentation filters and suppresses its fallback tags so each field is emitted once. Other SEO integrations that own those tags can disable the theme output with the `perihelion_emit_public_metadata` filter. See the [plugin documentation](https://github.com/makyrie/orbit/tree/main/docs) for the brand, content, compliance, and release architecture.
+
+## Testing
+
+Run `php tests/metadata-test.php` to verify the theme's Yoast filter callbacks, non-Yoast fallback, and metadata opt-out paths. Run `bash tests/metadata-smoke.sh https://example.test/` against a WordPress environment with its production SEO provider active to verify the rendered homepage contains the canonical title and exactly one of each metadata field.

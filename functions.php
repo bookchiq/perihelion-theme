@@ -200,17 +200,51 @@ function perihelion_public_description() {
 	return '';
 }
 
+/**
+ * Return the code-owned homepage title.
+ *
+ * @return string
+ */
+function perihelion_public_title() {
+	return __( 'Perihelion — More time with the friends you already have', 'perihelion' );
+}
+
 add_filter( 'document_title_parts', function ( $parts ) {
 	if ( is_front_page() ) {
-		$parts['title'] = __( 'Perihelion — More time with the friends you already have', 'perihelion' );
+		$parts['title'] = perihelion_public_title();
 		unset( $parts['tagline'] );
 	}
 	return $parts;
 } );
 
+/**
+ * Give Yoast the same code-owned metadata used by the theme fallback.
+ *
+ * Yoast short-circuits WordPress's document title and owns the social tags
+ * when active, so filtering its presentation prevents stale settings from
+ * replacing the reviewed public copy.
+ */
+add_filter( 'wpseo_title', function ( $title ) {
+	return is_front_page() ? perihelion_public_title() : $title;
+} );
+
+add_filter( 'wpseo_opengraph_title', function ( $title ) {
+	return is_front_page() ? perihelion_public_title() : $title;
+} );
+
+add_filter( 'wpseo_metadesc', function ( $description ) {
+	$public_description = perihelion_public_description();
+	return $public_description ? $public_description : $description;
+} );
+
+add_filter( 'wpseo_opengraph_desc', function ( $description ) {
+	$public_description = perihelion_public_description();
+	return $public_description ? $public_description : $description;
+} );
+
 add_action( 'wp_head', function () {
 	$description = perihelion_public_description();
-	if ( ! $description || ! apply_filters( 'perihelion_emit_public_metadata', true ) ) {
+	if ( defined( 'WPSEO_VERSION' ) || ! $description || ! apply_filters( 'perihelion_emit_public_metadata', true ) ) {
 		return;
 	}
 	echo '<meta name="description" content="' . esc_attr( $description ) . '">' . "\n";
