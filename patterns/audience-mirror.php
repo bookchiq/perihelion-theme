@@ -20,7 +20,15 @@
 	<!-- /wp:heading -->
 
 	<!-- wp:paragraph {"fontSize":"lead","style":{"color":{"text":"var:preset|color|slate"}}} -->
-	<p class="has-text-color has-lead-font-size" style="color:var(--wp--preset--color--slate)"><?php echo esc_html__( 'You know the dynamic. You do most of the inviting; your friends are happy when they show up, but reaching out feels heavier each time. Perihelion takes the social tax off the ask. Subscribers opt in once, and your invitations reach them the way they signed up to receive them. They reply if they want. No group-text awkwardness. No one-on-one pressure.', 'perihelion' ); ?></p>
+	<p class="has-text-color has-lead-font-size" style="color:var(--wp--preset--color--slate)"><?php echo esc_html__( 'You do most of the inviting, even when reaching out feels heavier each time. Perihelion takes the social tax off the ask: you share one personal link, approve the friends you know, and post when you have a plan. There is no public profile directory and no audience to build.', 'perihelion' ); ?></p>
+	<!-- /wp:paragraph -->
+
+	<!-- wp:heading {"level":3,"fontSize":"h3"} -->
+	<h3 class="wp-block-heading has-h-3-font-size"><?php echo esc_html__( 'If a friend invited you', 'perihelion' ); ?></h3>
+	<!-- /wp:heading -->
+
+	<!-- wp:paragraph -->
+	<p><?php echo esc_html__( 'You choose whose plans you want and how often email should arrive — right away or in one quiet daily digest. The organizer approves the connection. Reply “I’m in” or “Maybe” when you want; silence is a complete answer. SMS is planned, but remains unavailable until it is approved and enabled responsibly.', 'perihelion' ); ?></p>
 	<!-- /wp:paragraph -->
 
 </div>
