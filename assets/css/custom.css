@@ -647,14 +647,3 @@ a {
 	background-color: color-mix(in srgb, var(--wp--preset--color--paper) 94%, white);
 	padding: clamp(1.4rem, 2.5vw, 2rem);
 }
-
-/* Align Orbit's form focus ring with the theme. The plugin ships a blue
- * (rgba(37, 99, 235, …)) ring left over from its starter styles; replace it
- * with the sienna focus treatment used everywhere else in the theme so
- * forms on the settings / new-activity / profile screens feel of-a-piece. */
-.orbit-form-group input:focus,
-.orbit-form-group textarea:focus,
-.orbit-form-group select:focus {
-	border-color: var(--wp--preset--color--sienna);
-	box-shadow: 0 0 0 3px var(--wp--preset--color--rule);
-}
