@@ -608,3 +608,53 @@ a {
 		transition: none;
 	}
 }
+
+/* ---------------------------------------------------------------------- */
+/* 12. Application surface — carry the marketing card language into the     */
+/*     logged-in app (the Orbit plugin's dashboard, profile, manage, and    */
+/*     subscription screens).                                               */
+/*                                                                          */
+/*     Orbit ships its own theme-friendly CSS that already inherits our     */
+/*     palette through CSS custom properties, and it documents that themes  */
+/*     should refine the app surface by redefining those variables. We do   */
+/*     exactly that so the auth surface picks up the same "floating paper"  */
+/*     card treatment the marketing patterns use: a surface a shade lighter */
+/*     than the page, a soft diffuse shadow, and a larger corner radius.    */
+/*     These three variables are used only by Orbit's card surfaces, so     */
+/*     redefining them is side-effect free.                                 */
+/* ---------------------------------------------------------------------- */
+
+:root {
+	/* 12px -> 1.25rem, matching .perihelion-step / .perihelion-different. */
+	--orbit-radius-lg: 1.25rem;
+
+	/* Swap Orbit's tight two-layer shadow for the marketing card's single
+	 * wide, low-opacity shadow so cards read as floating above the paper
+	 * texture rather than pressed onto it. */
+	--orbit-shadow-soft: 0 1px 2px rgba(42, 42, 40, 0.03), 0 12px 32px rgba(42, 42, 40, 0.05);
+	--orbit-shadow-lift: 0 4px 10px rgba(42, 42, 40, 0.05), 0 18px 44px rgba(42, 42, 40, 0.09);
+}
+
+/* Lift the card surface a shade lighter than the cream-paper body — Orbit
+ * defaults cards to paper-warm, which sits *darker* than the page. Pairing a
+ * lighter surface with the diffuse shadow above is what gives the marketing
+ * cards their raised feel. The padding matches .perihelion-step. Inset panels
+ * meant to recede (the activity-audience / phone-verified blocks) keep
+ * paper-warm and are intentionally left alone. */
+.orbit-card,
+.orbit-dashboard .orbit-activity-card,
+.orbit-profile .orbit-activity-card {
+	background-color: color-mix(in srgb, var(--wp--preset--color--paper) 94%, white);
+	padding: clamp(1.4rem, 2.5vw, 2rem);
+}
+
+/* Align Orbit's form focus ring with the theme. The plugin ships a blue
+ * (rgba(37, 99, 235, …)) ring left over from its starter styles; replace it
+ * with the sienna focus treatment used everywhere else in the theme so
+ * forms on the settings / new-activity / profile screens feel of-a-piece. */
+.orbit-form-group input:focus,
+.orbit-form-group textarea:focus,
+.orbit-form-group select:focus {
+	border-color: var(--wp--preset--color--sienna);
+	box-shadow: 0 0 0 3px var(--wp--preset--color--rule);
+}
