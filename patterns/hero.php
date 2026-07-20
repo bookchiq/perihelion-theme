@@ -8,8 +8,12 @@
  * Block Types: core/group
  */
 ?>
-<!-- wp:group {"style":{"spacing":{"padding":{"top":"var:preset|spacing|80","bottom":"var:preset|spacing|80"},"blockGap":"var:preset|spacing|40"}},"layout":{"type":"constrained"}} -->
-<div class="wp-block-group" style="padding-top:var(--wp--preset--spacing--80);padding-bottom:var(--wp--preset--spacing--80)">
+<!-- wp:group {"align":"wide","className":"perihelion-hero","style":{"spacing":{"padding":{"top":"var:preset|spacing|80","bottom":"var:preset|spacing|80"},"blockGap":"var:preset|spacing|40"}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group alignwide perihelion-hero" style="padding-top:var(--wp--preset--spacing--80);padding-bottom:var(--wp--preset--spacing--80)">
+
+	<!-- wp:html -->
+	<div class="perihelion-orbit" aria-hidden="true"><span></span><span></span><span></span></div>
+	<!-- /wp:html -->
 
 	<!-- wp:heading {"level":1,"fontSize":"display","style":{"typography":{"letterSpacing":"-0.02em","lineHeight":"1"}}} -->
 	<h1 class="wp-block-heading has-display-font-size" style="letter-spacing:-0.02em;line-height:1">Perihelion</h1>
