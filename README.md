@@ -12,6 +12,10 @@ Editor changes to those surfaces are not authoritative and may be replaced on th
 
 The theme emits descriptions and Open Graph metadata for its public surfaces. When Yoast SEO is active, the theme supplies the code-owned title and descriptions through Yoast's presentation filters and suppresses its fallback tags so each field is emitted once. Other SEO integrations that own those tags can disable the theme output with the `perihelion_emit_public_metadata` filter. See the [plugin documentation](https://github.com/makyrie/orbit/tree/main/docs) for the brand, content, compliance, and release architecture.
 
+## Visual language
+
+The marketing surface uses warm editorial typography, tactile paper-like cards, asymmetrical layouts, and a code-rendered orbital motif. These treatments are scoped to the marketing pattern and template-part classes so the logged-in application remains quieter and more utilitarian. Decorative shapes are CSS or `aria-hidden` markup; the design does not depend on external image assets.
+
 ## Testing
 
 Run `php tests/metadata-test.php` to verify the theme's Yoast filter callbacks, non-Yoast fallback, and metadata opt-out paths. Run `bash tests/metadata-smoke.sh https://example.test/` against a WordPress environment with its production SEO provider active to verify the rendered homepage contains the canonical title and exactly one of each metadata field.

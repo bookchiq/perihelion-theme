@@ -20,6 +20,7 @@
 
 body {
 	background-image: url("data:image/svg+xml;utf8,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' seed='5'/%3E%3CfeColorMatrix values='0 0 0 0 0.16 0 0 0 0 0.16 0 0 0 0 0.13 0 0 0 0.045 0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+	background-color: var(--wp--preset--color--paper);
 }
 
 /* ---------------------------------------------------------------------- */
@@ -247,4 +248,363 @@ select:focus-visible {
 .wp-element-button,
 a {
 	transition: background-color 0.18s ease, color 0.18s ease, border-color 0.18s ease;
+}
+
+/* ---------------------------------------------------------------------- */
+/* 11. Marketing surface — warm editorial layouts with an orbital motif. */
+/* ---------------------------------------------------------------------- */
+
+.perihelion-marketing-header {
+	position: relative;
+	z-index: 20;
+	background: color-mix(in srgb, var(--wp--preset--color--paper) 88%, transparent);
+	backdrop-filter: blur(14px);
+	-webkit-backdrop-filter: blur(14px);
+}
+
+.is-marketing-nav .is-signup-link a {
+	padding: 0.45rem 0.85rem;
+	border: 1px solid var(--wp--preset--color--sienna);
+	border-radius: 999px;
+	color: var(--wp--preset--color--sienna-hover);
+}
+
+.is-marketing-nav .is-signup-link a:hover,
+.is-marketing-nav .is-signup-link a:focus {
+	background: var(--wp--preset--color--sienna);
+	color: var(--wp--preset--color--paper);
+	text-decoration: none;
+}
+
+.perihelion-hero {
+	position: relative;
+	min-height: 37rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	overflow: hidden;
+}
+
+.perihelion-hero > :not(.perihelion-orbit) {
+	width: min(100%, 39rem);
+	margin-left: 0 !important;
+	margin-right: auto !important;
+	position: relative;
+	z-index: 2;
+}
+
+.perihelion-hero h1 {
+	font-size: clamp(4.25rem, 8vw, 7rem) !important;
+	font-weight: 500;
+	letter-spacing: -0.055em !important;
+}
+
+.perihelion-hero .wp-block-button__link,
+.perihelion-closing .wp-block-button__link {
+	padding: 0.8rem 1.35rem;
+	border-radius: 999px;
+	box-shadow: 0 10px 24px rgba(128, 61, 38, 0.16);
+	transform: translateY(0);
+}
+
+.perihelion-hero .wp-block-button__link:hover,
+.perihelion-closing .wp-block-button__link:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 14px 30px rgba(128, 61, 38, 0.22);
+}
+
+.perihelion-orbit {
+	position: absolute;
+	z-index: 1;
+	right: 0;
+	top: 50%;
+	width: min(43vw, 31rem);
+	aspect-ratio: 1;
+	transform: translateY(-50%);
+	border: 1px solid color-mix(in srgb, var(--wp--preset--color--sienna) 35%, transparent);
+	border-radius: 50%;
+	background:
+		radial-gradient(circle at 54% 46%, var(--wp--preset--color--honey) 0 9%, transparent 9.5%),
+		radial-gradient(circle at 54% 46%, transparent 0 27%, color-mix(in srgb, var(--wp--preset--color--sage) 75%, transparent) 27.5% 42%, transparent 42.5%),
+		radial-gradient(circle at 54% 46%, transparent 0 57%, color-mix(in srgb, var(--wp--preset--color--sienna) 16%, transparent) 57.5% 74%, transparent 74.5%);
+}
+
+.perihelion-orbit::before,
+.perihelion-orbit::after,
+.perihelion-orbit span {
+	content: "";
+	position: absolute;
+	border-radius: 50%;
+}
+
+.perihelion-orbit::before {
+	width: 15%;
+	aspect-ratio: 1;
+	right: 6%;
+	top: 25%;
+	background: var(--wp--preset--color--sienna);
+	box-shadow: 0 8px 20px rgba(42, 42, 40, 0.15);
+}
+
+.perihelion-orbit::after {
+	width: 8%;
+	aspect-ratio: 1;
+	left: 12%;
+	bottom: 21%;
+	background: var(--wp--preset--color--sage);
+}
+
+.perihelion-orbit span:nth-child(1) {
+	width: 4%;
+	aspect-ratio: 1;
+	left: 22%;
+	top: 11%;
+	background: var(--wp--preset--color--honey);
+}
+
+.perihelion-orbit span:nth-child(2) {
+	width: 3%;
+	aspect-ratio: 1;
+	right: 24%;
+	bottom: 7%;
+	background: var(--wp--preset--color--ink);
+}
+
+.perihelion-audience {
+	position: relative;
+	display: grid;
+	grid-template-columns: minmax(0, 1.25fr) minmax(18rem, 0.75fr);
+	gap: 1rem 5rem;
+	align-items: start;
+}
+
+.perihelion-audience > * {
+	width: auto !important;
+	max-width: none !important;
+	margin-left: 0 !important;
+	margin-right: 0 !important;
+}
+
+.perihelion-audience > .is-style-eyebrow,
+.perihelion-audience > h2,
+.perihelion-audience > .has-lead-font-size {
+	grid-column: 1;
+}
+
+.perihelion-audience > h2 {
+	font-size: clamp(2.5rem, 5vw, 4.5rem) !important;
+	line-height: 1.02;
+}
+
+.perihelion-invite-note {
+	grid-column: 2;
+	grid-row: 1 / span 3;
+	padding: clamp(1.5rem, 3vw, 2.5rem);
+	border-radius: 1.75rem 1.75rem 1.75rem 0.35rem;
+	background: var(--wp--preset--color--paper-warm);
+	box-shadow: inset 0 0 0 1px var(--wp--preset--color--rule), 0 18px 45px rgba(42, 42, 40, 0.06);
+	transform: rotate(1.5deg);
+}
+
+.perihelion-invite-note::before {
+	content: "A note for the invited";
+	display: inline-block;
+	margin-bottom: 1rem;
+	font-size: 0.75rem;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.12em;
+	color: var(--wp--preset--color--sienna);
+}
+
+.perihelion-how,
+.perihelion-different {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 1.25rem;
+}
+
+.perihelion-how > *,
+.perihelion-different > * {
+	width: auto !important;
+	max-width: none !important;
+	margin-left: 0 !important;
+	margin-right: 0 !important;
+}
+
+.perihelion-how > :first-child,
+.perihelion-different > :first-child {
+	grid-column: 1 / -1;
+	margin-bottom: 1.25rem !important;
+}
+
+.perihelion-how {
+	position: relative;
+}
+
+.perihelion-how::before {
+	content: "";
+	position: absolute;
+	inset-block: 2rem;
+	inset-inline: calc(50% - 50vw);
+	z-index: -1;
+	background: color-mix(in srgb, var(--wp--preset--color--sage) 13%, var(--wp--preset--color--paper));
+	transform: skewY(-1.5deg);
+}
+
+.perihelion-step,
+.perihelion-different > .wp-block-group:not(:first-child) {
+	padding: clamp(1.4rem, 2.5vw, 2.15rem);
+	border: 1px solid var(--wp--preset--color--rule);
+	border-radius: 1.25rem;
+	background: color-mix(in srgb, var(--wp--preset--color--paper) 94%, white);
+	box-shadow: 0 12px 32px rgba(42, 42, 40, 0.045);
+}
+
+.perihelion-step__number {
+	box-shadow: 0 0 0 0.5rem color-mix(in srgb, var(--wp--preset--color--sienna) 10%, transparent);
+}
+
+.perihelion-different > .wp-block-group:not(:first-child) {
+	min-height: 14rem;
+	position: relative;
+	overflow: hidden;
+}
+
+.perihelion-different > .wp-block-group:not(:first-child)::after {
+	content: "";
+	position: absolute;
+	right: -2rem;
+	bottom: -2rem;
+	width: 6rem;
+	aspect-ratio: 1;
+	border: 1.25rem solid color-mix(in srgb, var(--wp--preset--color--honey) 18%, transparent);
+	border-radius: 50%;
+}
+
+.perihelion-different > .wp-block-group:nth-child(3)::after {
+	border-color: color-mix(in srgb, var(--wp--preset--color--sage) 25%, transparent);
+}
+
+.perihelion-different > .wp-block-group:nth-child(4)::after {
+	border-color: color-mix(in srgb, var(--wp--preset--color--sienna) 18%, transparent);
+}
+
+.perihelion-closing {
+	position: relative;
+	overflow: hidden;
+	background: var(--wp--preset--color--ink) !important;
+	color: var(--wp--preset--color--paper);
+}
+
+.perihelion-closing::before,
+.perihelion-closing::after {
+	content: "";
+	position: absolute;
+	border: 1px solid rgba(247, 243, 237, 0.18);
+	border-radius: 50%;
+}
+
+.perihelion-closing::before {
+	width: 24rem;
+	height: 24rem;
+	left: -8rem;
+	top: -15rem;
+}
+
+.perihelion-closing::after {
+	width: 15rem;
+	height: 15rem;
+	right: -4rem;
+	bottom: -10rem;
+}
+
+.perihelion-closing > .wp-block-group {
+	position: relative;
+	z-index: 1;
+	max-width: 46rem;
+}
+
+.perihelion-closing .has-text-color {
+	color: color-mix(in srgb, var(--wp--preset--color--paper) 75%, transparent) !important;
+}
+
+.perihelion-closing a:not(.wp-block-button__link) {
+	color: var(--wp--preset--color--paper);
+}
+
+.perihelion-marketing-footer {
+	background: color-mix(in srgb, var(--wp--preset--color--paper-warm) 88%, var(--wp--preset--color--sage)) !important;
+}
+
+@media (max-width: 900px) {
+	.perihelion-hero {
+		min-height: 34rem;
+	}
+
+	.perihelion-hero > :not(.perihelion-orbit) {
+		width: min(70%, 36rem);
+	}
+
+	.perihelion-orbit {
+		right: -2rem;
+		width: 26rem;
+		op: 54%;
+	}
+
+	.perihelion-audience {
+		grid-template-columns: 1fr;
+		gap: 1rem;
+	}
+
+	.perihelion-audience > .is-style-eyebrow,
+	.perihelion-audience > h2,
+	.perihelion-audience > .has-lead-font-size,
+	.perihelion-invite-note {
+		grid-column: 1;
+		grid-row: auto;
+	}
+
+	.perihelion-invite-note {
+		margin-top: 1.5rem !important;
+		transform: none;
+	}
+
+	.perihelion-how,
+	.perihelion-different {
+		grid-template-columns: 1fr;
+	}
+
+}
+
+@media (max-width: 600px) {
+	.perihelion-hero {
+		min-height: 42rem;
+		justify-content: flex-start;
+	}
+
+	.perihelion-hero > :not(.perihelion-orbit) {
+		width: 100%;
+	}
+
+	.perihelion-hero h1 {
+		font-size: clamp(3.5rem, 18vw, 5rem) !important;
+	}
+
+	.perihelion-orbit {
+		top: auto;
+		right: 0;
+		bottom: 1rem;
+		width: 17rem;
+		transform: none;
+		opacity: 0.78;
+	}
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.perihelion-hero .wp-block-button__link,
+	.perihelion-closing .wp-block-button__link {
+		transition: none;
+	}
 }
