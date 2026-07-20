@@ -1,0 +1,65 @@
+name: Deploy theme to production
+
+# Deploys the Perihelion FSE block theme to the A2 shared host over SSH.
+#
+# No build step: this is a static block theme (no composer/npm deps), so the
+# repository tree is rsynced straight to the production theme directory. No
+# activation is needed — the theme is already network-enabled; a deploy just
+# refreshes template/pattern/style files in place.
+#
+# Non-sensitive config lives in repo Variables (Settings -> Secrets and variables
+# -> Actions -> Variables); only the private key is a Secret:
+#   vars.SSH_HOST     e.g. happyhumans.com
+#   vars.SSH_USER     cPanel username (happyhum)
+#   vars.SSH_PORT     A2 default is 7822 (not 22)
+#   vars.DEPLOY_PATH  /home/happyhum/public_html/wp-content/themes/perihelion
+#   secrets.SSH_KEY   private half of a deploy-only keypair authorized on A2
+
+on:
+  push:
+    tags: ['v*']            # deploy when you push a release tag, e.g. v1.0.0
+  workflow_dispatch:         # ...or run manually from the Actions tab
+    inputs:
+      dry_run:
+        description: 'Dry run (rsync -n: report changes, write nothing)'
+        type: boolean
+        default: true
+
+concurrency:                 # never let two deploys overlap
+  group: production-theme-deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Add SSH key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan -p "${{ vars.SSH_PORT }}" -H "${{ vars.SSH_HOST }}" >> ~/.ssh/known_hosts
+
+      - name: Deploy with rsync
+        env:
+          DRY_RUN: ${{ inputs.dry_run }}
+        run: |
+          DRY=""
+          if [ "$DRY_RUN" = "true" ]; then
+            DRY="-n"
+            echo "::warning::DRY RUN — reporting changes only, nothing will be written."
+          fi
+          rsync -azi $DRY --delete \
+            -e "ssh -p ${{ vars.SSH_PORT }} -i ~/.ssh/id_ed25519" \
+            --exclude='.git/' \
+            --exclude='.github/' \
+            --exclude='.lattice/' \
+            --exclude='tests/' \
+            --exclude='todos/' \
+            --exclude='.gitignore' \
+            --exclude='ACTIVATION.md' \
+            --exclude='DEVIATIONS.md' \
+            --exclude='README.md' \
+            ./ "${{ vars.SSH_USER }}@${{ vars.SSH_HOST }}:${{ vars.DEPLOY_PATH }}"
